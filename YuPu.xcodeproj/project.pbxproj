@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */; };
-		BAEC45E827B4F9F0003B5121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* ViewController.swift */; };
+		BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */; };
 		BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */; };
 		BAEC45F027B4F9F2003B5121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAEC45EF27B4F9F2003B5121 /* Assets.xcassets */; };
 		BAEC45F327B4F9F2003B5121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAEC45F127B4F9F2003B5121 /* LaunchScreen.storyboard */; };
+		BAEC45FD27B84EE9003B5121 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45FC27B84EE9003B5121 /* OnboardingContainerViewController.swift */; };
+		BAEC45FF27B84EF9003B5121 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45FE27B84EF9003B5121 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BAEC45E027B4F9F0003B5121 /* YuPu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuPu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BAEC45E727B4F9F0003B5121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		BAEC45ED27B4F9F0003B5121 /* YuPu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YuPu.xcdatamodel; sourceTree = "<group>"; };
 		BAEC45EF27B4F9F2003B5121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAEC45F227B4F9F2003B5121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAEC45F427B4F9F2003B5121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAEC45FC27B84EE9003B5121 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
+		BAEC45FE27B84EF9003B5121 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +59,31 @@
 			isa = PBXGroup;
 			children = (
 				BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */,
-				BAEC45E727B4F9F0003B5121 /* ViewController.swift */,
-				BAEC45EF27B4F9F2003B5121 /* Assets.xcassets */,
-				BAEC45F127B4F9F2003B5121 /* LaunchScreen.storyboard */,
+				BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */,
+				BAEC45FB27B84E71003B5121 /* Onboarding */,
+				BAEC45FA27B84DCB003B5121 /* Files */,
 				BAEC45F427B4F9F2003B5121 /* Info.plist */,
 				BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */,
 			);
 			path = YuPu;
+			sourceTree = "<group>";
+		};
+		BAEC45FA27B84DCB003B5121 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				BAEC45F127B4F9F2003B5121 /* LaunchScreen.storyboard */,
+				BAEC45EF27B4F9F2003B5121 /* Assets.xcassets */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		BAEC45FB27B84E71003B5121 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BAEC45FC27B84EE9003B5121 /* OnboardingContainerViewController.swift */,
+				BAEC45FE27B84EF9003B5121 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +157,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */,
-				BAEC45E827B4F9F0003B5121 /* ViewController.swift in Sources */,
+				BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */,
+				BAEC45FF27B84EF9003B5121 /* OnboardingViewController.swift in Sources */,
 				BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */,
+				BAEC45FD27B84EE9003B5121 /* OnboardingContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
