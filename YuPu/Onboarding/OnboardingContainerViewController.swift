@@ -25,7 +25,7 @@ class OnboardingContainerViewController: UIViewController {
         
         let page1 = OnboardingViewController(imageName: "yupuHappy", labelText: "I'm YuPu!")
         let page2 = OnboardingViewController(imageName: "yupuBlink", labelText: "I'm here to check things out!")
-        let page3 = OnboardingViewController(imageName: "yupuSmile", labelText: "Let's get checking!.")
+        let page3 = OnboardingViewController(imageName: "yupuSmile", labelText: "Let's get \nchecking!")
         // all images courtesy of: "https://www.freepik.com/vectors/money">Money vector created by stories - www.freepik.com
         
         pages.append(page1)

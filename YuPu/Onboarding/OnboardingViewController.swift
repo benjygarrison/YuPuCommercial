@@ -11,7 +11,8 @@ class OnboardingViewController: UIViewController {
     
     let stackView = UIStackView()
     let label = UILabel()
-    let imageView = UIImageView()
+    let dialogImageView = UIImageView()
+    let yupuImageView = UIImageView()
    
     let imageName: String
     let labelText: String
@@ -45,29 +46,43 @@ extension OnboardingViewController {
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.text = labelText
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: imageName)
+        dialogImageView.translatesAutoresizingMaskIntoConstraints = false
+        dialogImageView.contentMode = .scaleAspectFit
+        dialogImageView.image = UIImage(named: "Speech-Bubble")
+        
+        yupuImageView.translatesAutoresizingMaskIntoConstraints = false
+        yupuImageView.contentMode = .scaleAspectFit
+        yupuImageView.image = UIImage(named: imageName)
         
        
     }
     
     func layout() {
-        view.addSubview(imageView)
+        view.addSubview(yupuImageView)
         view.addSubview(label)
+        view.addSubview(dialogImageView)
         
         NSLayoutConstraint.activate([
-            label.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -20),
-            label.trailingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            dialogImageView.bottomAnchor.constraint(equalTo: yupuImageView.topAnchor, constant: 8),
+            dialogImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
+            
+            label.bottomAnchor.constraint(equalTo: yupuImageView.topAnchor),
+            label.trailingAnchor.constraint(equalTo: dialogImageView.trailingAnchor, constant: -2),
 
+            yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
         ])
-        label.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 190).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        view.bringSubviewToFront(label)
+        
+        dialogImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        dialogImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        yupuImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
+        yupuImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
     }
 }
 
