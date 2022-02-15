@@ -21,6 +21,11 @@ class WelcomeViewController: UIViewController {
         return yupuImageView
     }()
     
+    //MARK: Animations
+    var trailingEdgeOnScreen: CGFloat = -4
+    var trailingEdgeOffScreen: CGFloat = -1000
+    
+    var yupuImageTrailingAnchor: NSLayoutConstraint?
     
 //    let label = UILabel()
     
@@ -29,6 +34,11 @@ class WelcomeViewController: UIViewController {
         style()
         layout()
         imageViewTapped()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
     }
 
     func style() {
@@ -43,20 +53,27 @@ class WelcomeViewController: UIViewController {
     }
     
     func layout() {
-//        stackView.addArrangedSubview(label)
         view.addSubview(yupuImageView)
-//        view.addSubview(stackView)
+
+//      view.addSubview(stackView)
+//      stackView.addArrangedSubview(label)
+
+//      NSLayoutConstraint.activate([
+//          stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//          stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//      ])
         
         NSLayoutConstraint.activate([
-//            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
             yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            //yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
         ])
 
         yupuImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
         yupuImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+        
+        yupuImageTrailingAnchor = yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOffScreen)
+        yupuImageTrailingAnchor?.isActive = true
+        
     }
 }
 
@@ -70,16 +87,38 @@ extension WelcomeViewController {
         yupuImageView.isUserInteractionEnabled = true
     }
     
-    @objc func yupuButtonTapped() {
-        print("yupu tapped!")
-    }
-    
     @objc func yupuImageViewTapped(sender: UITapGestureRecognizer) {
         
         if sender.state == .ended {
             yupuImageView.image = UIImage(named: "yupuSmile")
+            animateDissolve()
             print("yupu image tapped")
         }
     }
     
+}
+
+//MARK: Animation functions
+extension WelcomeViewController {
+    
+    private func animate() {
+        let animationDuration = 1.9
+        
+        let animatorOne = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.yupuImageTrailingAnchor?.constant = self.trailingEdgeOnScreen
+            
+            self.view.layoutIfNeeded()
+        }
+        animatorOne.startAnimation()
+    }
+    
+    private func animateDissolve() {
+        let animationDuration = 1.5
+        
+        let animatorTwo = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.yupuImageView.alpha = 0
+            self.view.layoutIfNeeded()
+            }
+        animatorTwo.startAnimation(afterDelay: 0.1)
+    }
 }
