@@ -32,7 +32,8 @@ class WelcomeViewController: UIViewController {
     var trailingEdgeOnScreen: CGFloat = -4
     var trailingEdgeOffScreen: CGFloat = -1000
     
-    var yupuImageTrailingAnchor: NSLayoutConstraint?
+    var firstYupuImageTrailingAnchor: NSLayoutConstraint?
+    var secondYupuImageTrailingAnchor: NSLayoutConstraint?
 
     
 //MARK: ViewDidLoad
@@ -45,13 +46,19 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animate()
+        animateSlideIn()
+        animationFirstShake()
         animateDissolve()
+        animateAppear()
+        animationSecondShake()
+        animateSlideOut()
     }
 
     func style() {
         firstYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         secondYupuImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        secondYupuImageView.alpha = 0
 //        stackView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.axis = .vertical
 //        stackView.spacing = 20
@@ -77,15 +84,16 @@ class WelcomeViewController: UIViewController {
             firstYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
         ])
         
-        yupuImageTrailingAnchor = firstYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOffScreen)
-        yupuImageTrailingAnchor?.isActive = true
+        firstYupuImageTrailingAnchor = firstYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOffScreen)
+        firstYupuImageTrailingAnchor?.isActive = true
         
         NSLayoutConstraint.activate([
             secondYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            //secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
         ])
         
-        
+        secondYupuImageTrailingAnchor = secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOnScreen)
+        secondYupuImageTrailingAnchor?.isActive = true
         
         
     }
@@ -115,11 +123,11 @@ extension WelcomeViewController {
 //MARK: Animation functions
 extension WelcomeViewController {
     
-    private func animate() {
+    private func animateSlideIn() {
         let animationDuration = 1.9
         
         let animatorOne = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-            self.yupuImageTrailingAnchor?.constant = self.trailingEdgeOnScreen
+            self.firstYupuImageTrailingAnchor?.constant = self.trailingEdgeOnScreen
             
             self.view.layoutIfNeeded()
         }
@@ -134,5 +142,50 @@ extension WelcomeViewController {
             self.view.layoutIfNeeded()
             }
         animatorTwo.startAnimation(afterDelay: 3.0)
+    }
+    
+    private func animateAppear() {
+        let animationDuration = 3.0
+        
+        let animatorThree = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.secondYupuImageView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        animatorThree.startAnimation(afterDelay: 4.7)
+    }
+    
+    private func animateSlideOut() {
+        let animationDuration = 1.9
+        
+        let animatorFour = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.secondYupuImageTrailingAnchor?.constant = self.trailingEdgeOffScreen
+            
+            self.view.layoutIfNeeded()
+        }
+        animatorFour.startAnimation(afterDelay: 8.0)
+    }
+    
+    private func animationFirstShake() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [0, 10, -10, 10, 0]
+        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
+        animation.duration = 0.5
+        animation.isAdditive = true
+        animation.beginTime = CACurrentMediaTime() + 1.8
+        
+        firstYupuImageView.layer.add(animation, forKey: "shake")
+    }
+    
+    private func animationSecondShake() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [0, 10, -10, 10, 0]
+        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
+        animation.duration = 0.4
+        animation.isAdditive = true
+        animation.beginTime = CACurrentMediaTime() + 7.6
+        
+        secondYupuImageView.layer.add(animation, forKey: "shake")
     }
 }
