@@ -27,13 +27,21 @@ class WelcomeViewController: UIViewController {
         return yupuImageView
     }()
     
+    let thirdYupuImageView: UIImageView = {
+        let yupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
+
+        return yupuImageView
+    }()
     
 //MARK: Animations
     var trailingEdgeOnScreen: CGFloat = -4
     var trailingEdgeOffScreen: CGFloat = -1000
+    var bottomEdgeOffScreen: CGFloat = -1000
+    var bottomEdgeOnScreen: CGFloat = -40
     
     var firstYupuImageTrailingAnchor: NSLayoutConstraint?
     var secondYupuImageTrailingAnchor: NSLayoutConstraint?
+    var thirdYupuImageBottomAnchor: NSLayoutConstraint?
 
     
 //MARK: ViewDidLoad
@@ -52,11 +60,13 @@ class WelcomeViewController: UIViewController {
         animateAppear()
         animationSecondShake()
         animateSlideOut()
+        animateDropIn()
     }
 
     func style() {
         firstYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         secondYupuImageView.translatesAutoresizingMaskIntoConstraints = false
+        thirdYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         
         secondYupuImageView.alpha = 0
 //        stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +81,7 @@ class WelcomeViewController: UIViewController {
     func layout() {
         view.addSubview(firstYupuImageView)
         view.addSubview(secondYupuImageView)
+        view.addSubview(thirdYupuImageView)
 
 //      view.addSubview(stackView)
 //      stackView.addArrangedSubview(label)
@@ -95,7 +106,12 @@ class WelcomeViewController: UIViewController {
         secondYupuImageTrailingAnchor = secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOnScreen)
         secondYupuImageTrailingAnchor?.isActive = true
         
+        NSLayoutConstraint.activate([
+            thirdYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+        ])
         
+        thirdYupuImageBottomAnchor = thirdYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: bottomEdgeOffScreen)
+        thirdYupuImageBottomAnchor?.isActive = true
     }
 }
 
@@ -163,6 +179,7 @@ extension WelcomeViewController {
             self.view.layoutIfNeeded()
         }
         animatorFour.startAnimation(afterDelay: 8.0)
+        
     }
     
     private func animationFirstShake() {
@@ -187,5 +204,16 @@ extension WelcomeViewController {
         animation.beginTime = CACurrentMediaTime() + 7.6
         
         secondYupuImageView.layer.add(animation, forKey: "shake")
+    }
+    
+    private func animateDropIn() {
+        let animationDuration = 1.9
+        
+        let animatorFive = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.thirdYupuImageBottomAnchor?.constant = self.bottomEdgeOnScreen
+            
+            self.view.layoutIfNeeded()
+        }
+        animatorFive.startAnimation(afterDelay: 9.5)
     }
 }
