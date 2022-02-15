@@ -66,12 +66,13 @@ extension OnboardingViewController {
         
         NSLayoutConstraint.activate([
             dialogImageView.bottomAnchor.constraint(equalTo: yupuImageView.topAnchor, constant: 8),
-            dialogImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4),
+            dialogImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -150),
             
             label.bottomAnchor.constraint(equalTo: yupuImageView.topAnchor),
             label.trailingAnchor.constraint(equalTo: dialogImageView.trailingAnchor, constant: -2),
 
-            yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            //yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            yupuImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
             yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
         ])
         label.widthAnchor.constraint(equalToConstant: 190).isActive = true

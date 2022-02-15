@@ -15,15 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let homeScreenViewController = HomeScreenViewController()
     let onboardingContainerViewController = OnboardingContainerViewController()
+    let welcomeViewController = WelcomeViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        //window?.rootViewController = HomeScreenViewController()
-        window?.rootViewController = onboardingContainerViewController
-        
+        //window?.rootViewController = homeScreenViewController
+        //window?.rootViewController = onboardingContainerViewController
+        window?.rootViewController = welcomeViewController
         
         return true
         
