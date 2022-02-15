@@ -11,24 +11,31 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+//MARK: Variables
+//    let label = UILabel()
 //    let stackView = UIStackView()
     
-    let yupuImageView: UIImageView = {
-        let yupuImageView = UIImageView()
-      
-        yupuImageView.image = UIImage(named: "yupuHappy")
+    let firstYupuImageView: UIImageView = {
+        let yupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
 
         return yupuImageView
     }()
     
-    //MARK: Animations
+    let secondYupuImageView: UIImageView = {
+        let yupuImageView = YupuImageView(image: UIImage(named: "yupuSmile"))
+
+        return yupuImageView
+    }()
+    
+    
+//MARK: Animations
     var trailingEdgeOnScreen: CGFloat = -4
     var trailingEdgeOffScreen: CGFloat = -1000
     
     var yupuImageTrailingAnchor: NSLayoutConstraint?
+
     
-//    let label = UILabel()
-    
+//MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -39,10 +46,12 @@ class WelcomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animate()
+        animateDissolve()
     }
 
     func style() {
-        yupuImageView.translatesAutoresizingMaskIntoConstraints = false
+        firstYupuImageView.translatesAutoresizingMaskIntoConstraints = false
+        secondYupuImageView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.axis = .vertical
 //        stackView.spacing = 20
@@ -53,7 +62,8 @@ class WelcomeViewController: UIViewController {
     }
     
     func layout() {
-        view.addSubview(yupuImageView)
+        view.addSubview(firstYupuImageView)
+        view.addSubview(secondYupuImageView)
 
 //      view.addSubview(stackView)
 //      stackView.addArrangedSubview(label)
@@ -64,15 +74,19 @@ class WelcomeViewController: UIViewController {
 //      ])
         
         NSLayoutConstraint.activate([
-            yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            //yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            firstYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
         ])
-
-        yupuImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
-        yupuImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
         
-        yupuImageTrailingAnchor = yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOffScreen)
+        yupuImageTrailingAnchor = firstYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOffScreen)
         yupuImageTrailingAnchor?.isActive = true
+        
+        NSLayoutConstraint.activate([
+            secondYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+        ])
+        
+        
+        
         
     }
 }
@@ -83,14 +97,14 @@ extension WelcomeViewController {
     
     private func imageViewTapped() {
         let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.yupuImageViewTapped))
-        yupuImageView.addGestureRecognizer(tapped)
-        yupuImageView.isUserInteractionEnabled = true
+        firstYupuImageView.addGestureRecognizer(tapped)
+        firstYupuImageView.isUserInteractionEnabled = true
     }
     
     @objc func yupuImageViewTapped(sender: UITapGestureRecognizer) {
         
         if sender.state == .ended {
-            yupuImageView.image = UIImage(named: "yupuSmile")
+            firstYupuImageView.image = UIImage(named: "yupuSmile")
             animateDissolve()
             print("yupu image tapped")
         }
@@ -113,12 +127,12 @@ extension WelcomeViewController {
     }
     
     private func animateDissolve() {
-        let animationDuration = 1.5
+        let animationDuration = 2.0
         
         let animatorTwo = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-            self.yupuImageView.alpha = 0
+            self.firstYupuImageView.alpha = 0
             self.view.layoutIfNeeded()
             }
-        animatorTwo.startAnimation(afterDelay: 0.1)
+        animatorTwo.startAnimation(afterDelay: 3.0)
     }
 }

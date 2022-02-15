@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */; };
+		BA77B55B27BB9F62008A4BCC /* YupuImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55A27BB9F62008A4BCC /* YupuImageView.swift */; };
 		BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */; };
 		BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */; };
 		BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		BA77B55A27BB9F62008A4BCC /* YupuImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YupuImageView.swift; sourceTree = "<group>"; };
 		BAEC45E027B4F9F0003B5121 /* YuPu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuPu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA77B55827BB9DAF008A4BCC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */,
+				BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */,
+				BAEC45FB27B84E71003B5121 /* Onboarding */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BA77B55927BB9F4C008A4BCC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA77B55A27BB9F62008A4BCC /* YupuImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BAEC45D727B4F9F0003B5121 = {
 			isa = PBXGroup;
 			children = (
@@ -61,9 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */,
-				BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */,
-				BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */,
-				BAEC45FB27B84E71003B5121 /* Onboarding */,
+				BA77B55927BB9F4C008A4BCC /* View */,
+				BA77B55827BB9DAF008A4BCC /* ViewControllers */,
 				BAEC45FA27B84DCB003B5121 /* Files */,
 				BAEC45F427B4F9F2003B5121 /* Info.plist */,
 				BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */,
@@ -165,6 +184,7 @@
 				BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */,
 				BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */,
 				BAEC45FD27B84EE9003B5121 /* OnboardingContainerViewController.swift in Sources */,
+				BA77B55B27BB9F62008A4BCC /* YupuImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
