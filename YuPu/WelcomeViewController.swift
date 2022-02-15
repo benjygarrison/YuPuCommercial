@@ -12,27 +12,27 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
 //    let stackView = UIStackView()
-//    let imageView = UIImageView()
-//    let label = UILabel()
-      let yupuButton: UIButton = {
-          let buttonImage = UIImage(named: "yupuHappy") as UIImage?
-          
-          let yupuButton = UIButton(type: .custom)
-          yupuButton.setImage(buttonImage, for: .normal)
-          //yupuButton.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-          return yupuButton
+    
+    let yupuImageView: UIImageView = {
+        let yupuImageView = UIImageView()
+      
+        yupuImageView.image = UIImage(named: "yupuHappy")
+
+        return yupuImageView
     }()
+    
+    
+//    let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+        imageViewTapped()
     }
 
     func style() {
-        
-        yupuButton.translatesAutoresizingMaskIntoConstraints = false
-        
+        yupuImageView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.axis = .vertical
 //        stackView.spacing = 20
@@ -44,17 +44,42 @@ class WelcomeViewController: UIViewController {
     
     func layout() {
 //        stackView.addArrangedSubview(label)
-        view.addSubview(yupuButton)
+        view.addSubview(yupuImageView)
 //        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
 //            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            yupuButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-            yupuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+
+            yupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            yupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
         ])
-        
-        yupuButton.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
-        yupuButton.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+
+        yupuImageView.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
+        yupuImageView.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
     }
+}
+
+extension WelcomeViewController {
+    
+    //MARK: Functions
+    
+    private func imageViewTapped() {
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.yupuImageViewTapped))
+        yupuImageView.addGestureRecognizer(tapped)
+        yupuImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func yupuButtonTapped() {
+        print("yupu tapped!")
+    }
+    
+    @objc func yupuImageViewTapped(sender: UITapGestureRecognizer) {
+        
+        if sender.state == .ended {
+            yupuImageView.image = UIImage(named: "yupuSmile")
+            print("yupu image tapped")
+        }
+    }
+    
 }

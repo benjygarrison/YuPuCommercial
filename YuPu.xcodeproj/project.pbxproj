@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */; };
+		BA77B55527BB6D45008A4BCC /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55427BB6D45008A4BCC /* UIButton+Extensions.swift */; };
 		BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */; };
 		BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */; };
 		BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		BA77B55427BB6D45008A4BCC /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		BAEC45E027B4F9F0003B5121 /* YuPu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuPu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */,
 				BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */,
 				BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */,
+				BA77B55427BB6D45008A4BCC /* UIButton+Extensions.swift */,
 				BAEC45FB27B84E71003B5121 /* Onboarding */,
 				BAEC45FA27B84DCB003B5121 /* Files */,
 				BAEC45F427B4F9F2003B5121 /* Info.plist */,
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */,
+				BA77B55527BB6D45008A4BCC /* UIButton+Extensions.swift in Sources */,
 				BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */,
 				BAEC45FF27B84EF9003B5121 /* OnboardingViewController.swift in Sources */,
 				BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */,
