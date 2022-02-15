@@ -23,7 +23,7 @@ class OnboardingContainerViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let page1 = OnboardingViewController(imageName: "yupuHappy", labelText: "Welcome to the YuPu!")
+        let page1 = OnboardingViewController(imageName: "yupuHappy", labelText: "I'm YuPu!")
         let page2 = OnboardingViewController(imageName: "yupuBlink", labelText: "I'm here to check things out!")
         let page3 = OnboardingViewController(imageName: "yupuSmile", labelText: "Let's get checking!.")
         // all images courtesy of: "https://www.freepik.com/vectors/money">Money vector created by stories - www.freepik.com
@@ -125,11 +125,12 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
 extension OnboardingContainerViewController {
     
     @objc func closeTapped(_ sender: UIButton) {
-        delegate?.didFinishOnboarding()
+        print("close tapped")
+        //delegate?.didFinishOnboarding()
     }
     
-    @objc func doneTapped() {
-        delegate?.didFinishOnboarding()
-    }
+//    @objc func doneTapped() {
+//        delegate?.didFinishOnboarding()
+//    }
 }
 
