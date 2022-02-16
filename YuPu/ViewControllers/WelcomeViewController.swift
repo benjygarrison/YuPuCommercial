@@ -13,7 +13,6 @@ class WelcomeViewController: UIViewController {
     
 //MARK: Variables
 //    let label = UILabel()
-//    let stackView = UIStackView()
     
     let firstYupuImageView: UIImageView = {
         let yupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
@@ -36,6 +35,7 @@ class WelcomeViewController: UIViewController {
 //MARK: Animations
     var trailingEdgeOnScreen: CGFloat = -4
     var trailingEdgeOffScreen: CGFloat = -1000
+    var trailingEdgeOffScreenRight: CGFloat = 1000
     var bottomEdgeOffScreen: CGFloat = -1000
     var bottomEdgeOnScreen: CGFloat = -40
     
@@ -56,11 +56,13 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         animateSlideIn()
         animationFirstShake()
-        animateDissolve()
+        //animateDissolve()
         animateAppear()
         animationSecondShake()
-        animateSlideOut()
+        animateSlideOutLeft()
         animateDropIn()
+        animateSlideOutRight()
+        animateChangeSize()
     }
 
     func style() {
@@ -69,27 +71,12 @@ class WelcomeViewController: UIViewController {
         thirdYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         
         secondYupuImageView.alpha = 0
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.axis = .vertical
-//        stackView.spacing = 20
-//
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "welcome"
-//        label.font = UIFont.preferredFont(forTextStyle: .title1)
     }
     
     func layout() {
         view.addSubview(firstYupuImageView)
         view.addSubview(secondYupuImageView)
         view.addSubview(thirdYupuImageView)
-
-//      view.addSubview(stackView)
-//      stackView.addArrangedSubview(label)
-
-//      NSLayoutConstraint.activate([
-//          stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//          stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//      ])
         
         NSLayoutConstraint.activate([
             firstYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
@@ -99,8 +86,7 @@ class WelcomeViewController: UIViewController {
         firstYupuImageTrailingAnchor?.isActive = true
         
         NSLayoutConstraint.activate([
-            secondYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            //secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4),
+            secondYupuImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
         ])
         
         secondYupuImageTrailingAnchor = secondYupuImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingEdgeOnScreen)
@@ -170,7 +156,7 @@ extension WelcomeViewController {
         animatorThree.startAnimation(afterDelay: 4.7)
     }
     
-    private func animateSlideOut() {
+    private func animateSlideOutLeft() {
         let animationDuration = 1.9
         
         let animatorFour = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
@@ -179,6 +165,18 @@ extension WelcomeViewController {
             self.view.layoutIfNeeded()
         }
         animatorFour.startAnimation(afterDelay: 8.0)
+        
+    }
+    
+    private func animateSlideOutRight() {
+        let animationDuration = 1.9
+        
+        let animatorSix = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.firstYupuImageTrailingAnchor?.constant = self.trailingEdgeOffScreenRight
+            
+            self.view.layoutIfNeeded()
+        }
+        animatorSix.startAnimation(afterDelay: 3.5)
         
     }
     
@@ -216,4 +214,17 @@ extension WelcomeViewController {
         }
         animatorFive.startAnimation(afterDelay: 9.5)
     }
+    private func animateChangeSize() {
+        UIView.animate(withDuration: 5.0, delay: 12.0, animations: {
+            self.thirdYupuImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+       })
+    }
+    
+    //MARK: add squash animation
+//    private func animateChangeSize() {
+//        UIView.animate(withDuration: 2.0, delay: 12.0, options: [.repeat, .autoreverse], animations: {
+//            self.thirdYupuImageView.transform = CGAffineTransform(scaleX: 1, y: 0.5)
+//       })
+//    }
+//
 }

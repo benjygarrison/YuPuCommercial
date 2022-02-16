@@ -61,6 +61,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		BA77B55E27BC6031008A4BCC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BAEC45D727B4F9F0003B5121 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +90,7 @@
 				BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */,
 				BA77B55927BB9F4C008A4BCC /* View */,
 				BA77B55827BB9DAF008A4BCC /* ViewControllers */,
+				BA77B55E27BC6031008A4BCC /* Extensions */,
 				BAEC45FA27B84DCB003B5121 /* Files */,
 				BAEC45F427B4F9F2003B5121 /* Info.plist */,
 				BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */,
