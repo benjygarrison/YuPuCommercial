@@ -12,33 +12,17 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
 //MARK: UI Variables
-    let dialogLabel: UILabel = {
-        let dialogLabel = DialogLabel(placeholder: "Click me!")
-        return dialogLabel
-    }()
+    let firstDialogLabel = DialogLabel(placeholder: "Click YuPu and see what happens!")
+    let secondDialogLabel = DialogLabel(placeholder: "Great job! Click me again!")
+    let thirdDialogLabel = DialogLabel(placeholder: "You got it! One more time!!")
     
-    let dialogImageView: UIImageView = {
-        let dialogImageView = DialogImageView()
-        return dialogImageView
-    }()
+    let firstDialogImageView = DialogImageView()
+    let secondDialogImageView = DialogImageView()
+    let thirdDialogImageView = DialogImageView()
     
-    let firstYupuImageView: UIImageView = {
-        let yupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
-
-        return yupuImageView
-    }()
-    
-    let secondYupuImageView: UIImageView = {
-        let yupuImageView = YupuImageView(image: UIImage(named: "yupuSmile"))
-
-        return yupuImageView
-    }()
-    
-    let thirdYupuImageView: UIImageView = {
-        let yupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
-
-        return yupuImageView
-    }()
+    let firstYupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
+    let secondYupuImageView = YupuImageView(image: UIImage(named: "yupuSmile"))
+    let thirdYupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
     
 //MARK: Animation Variables
     var yupuTrailingEdgeOnScreen: CGFloat = -4
@@ -47,25 +31,17 @@ class WelcomeViewController: UIViewController {
     var bottomEdgeOffScreen: CGFloat = -1000
     var yupuBottomEdgeOnScreen: CGFloat = -40
     
-    var dialogImageViewTrailingEdgeOnScreen: CGFloat = -180
-    var dialogLabelTrailingEdgeOnScreen: CGFloat = -2
-    
     var firstYupuImageTrailingAnchor: NSLayoutConstraint?
     var secondYupuImageTrailingAnchor: NSLayoutConstraint?
     var thirdYupuImageBottomAnchor: NSLayoutConstraint?
-    
-    var dialogImageViewTrailingAnchor: NSLayoutConstraint?
-    var dialogLabelTrailingAnchor: NSLayoutConstraint?
-    var dialogImageViewBottomAnchor: NSLayoutConstraint?
-    var dialogLabelBottomAnchor: NSLayoutConstraint?
-
     
 //MARK: ViewDidLoad/ViewDidAppear
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
-        imageViewTapped()
+        firstImageViewTapped()
+        secondImageViewTapped()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,35 +50,37 @@ class WelcomeViewController: UIViewController {
         animateYupuSlideIn()
         animateFirstDialogAppearance()
         animationFirstShake()
-//      animateDialogDissolve()
-        
-//      animateYupuDissolve()
-//      animateYupuAppear()
-//      animationSecondShake()
-//      animateSlideOutLeft()
-//      animateDropIn()
-//      animateYupuSlideOutRight()
-//      animateChangeSize()
     }
 
 //MARK: Style/Layout
     func style() {
-        dialogLabel.translatesAutoresizingMaskIntoConstraints = false
-        dialogLabel.alpha = 0
+        firstDialogLabel.translatesAutoresizingMaskIntoConstraints = false
+        firstDialogLabel.alpha = 0
+        secondDialogLabel.translatesAutoresizingMaskIntoConstraints = false
+        secondDialogLabel.alpha = 0
+        thirdDialogLabel.translatesAutoresizingMaskIntoConstraints = false
+        thirdDialogLabel.alpha = 0
         
-        dialogImageView.translatesAutoresizingMaskIntoConstraints = false
-        dialogImageView.alpha = 0
+        firstDialogImageView.translatesAutoresizingMaskIntoConstraints = false
+        firstDialogImageView.alpha = 0
+        secondDialogImageView.translatesAutoresizingMaskIntoConstraints = false
+        secondDialogImageView.alpha = 0
+        thirdDialogImageView.translatesAutoresizingMaskIntoConstraints = false
+        thirdDialogImageView.alpha = 0
         
         firstYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         secondYupuImageView.translatesAutoresizingMaskIntoConstraints = false
         thirdYupuImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         secondYupuImageView.alpha = 0
     }
     
     func layout() {
-        view.addSubview(dialogImageView)
-        view.addSubview(dialogLabel)
+        view.addSubview(firstDialogImageView)
+        view.addSubview(secondDialogImageView)
+        view.addSubview(thirdDialogImageView)
+        view.addSubview(firstDialogLabel)
+        view.addSubview(secondDialogLabel)
+        view.addSubview(thirdDialogLabel)
         view.addSubview(firstYupuImageView)
         view.addSubview(secondYupuImageView)
         view.addSubview(thirdYupuImageView)
@@ -110,22 +88,25 @@ class WelcomeViewController: UIViewController {
         
         //Dialog box layout
         NSLayoutConstraint.activate([
-            dialogImageView.bottomAnchor.constraint(equalTo: firstYupuImageView.topAnchor, constant: 8),
-            dialogLabel.bottomAnchor.constraint(equalTo: firstYupuImageView.topAnchor, constant: -4),
+            firstDialogImageView.bottomAnchor.constraint(equalTo: firstYupuImageView.topAnchor, constant: 8),
+            firstDialogImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -180),
+            firstDialogLabel.topAnchor.constraint(equalTo: firstDialogImageView.topAnchor, constant: 40),
+            firstDialogLabel.centerXAnchor.constraint(equalTo: firstDialogImageView.trailingAnchor, constant: -100),
+            
+            secondDialogImageView.bottomAnchor.constraint(equalTo: firstYupuImageView.topAnchor, constant: 8),
+            secondDialogImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -180),
+            secondDialogLabel.topAnchor.constraint(equalTo: firstDialogImageView.topAnchor, constant: 40),
+            secondDialogLabel.centerXAnchor.constraint(equalTo: firstDialogImageView.trailingAnchor, constant: -100),
+            
+            thirdDialogImageView.bottomAnchor.constraint(equalTo: firstYupuImageView.topAnchor, constant: 8),
+            thirdDialogImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -180),
+            thirdDialogLabel.topAnchor.constraint(equalTo: firstDialogImageView.topAnchor, constant: 40),
+            thirdDialogLabel.centerXAnchor.constraint(equalTo: firstDialogImageView.trailingAnchor, constant: -100),
         ])
         
-        dialogImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        dialogImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        dialogImageViewTrailingAnchor = dialogImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: dialogImageViewTrailingEdgeOnScreen)
-        dialogImageViewTrailingAnchor?.isActive = true
-        
-        dialogLabel.widthAnchor.constraint(equalToConstant: 190).isActive = true
-        dialogLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        view.bringSubviewToFront(dialogLabel)
-        
-        dialogLabelTrailingAnchor = dialogLabel.trailingAnchor.constraint(equalTo: dialogImageView.trailingAnchor, constant: dialogLabelTrailingEdgeOnScreen)
-        dialogLabelTrailingAnchor?.isActive = true
+        view.bringSubviewToFront(firstDialogLabel)
+        view.bringSubviewToFront(secondDialogLabel)
+        view.bringSubviewToFront(thirdDialogLabel)
         
         //Yupu layout
         NSLayoutConstraint.activate([
@@ -152,19 +133,36 @@ class WelcomeViewController: UIViewController {
 }
 
 //MARK: Interaction Functions
+
+//First yupu image view tapped
 extension WelcomeViewController {
-    private func imageViewTapped() {
-        let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.yupuImageViewTapped))
+    private func firstImageViewTapped() {
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.firstYupuImageViewTapped))
         firstYupuImageView.addGestureRecognizer(tapped)
         firstYupuImageView.isUserInteractionEnabled = true
     }
     
-    @objc func yupuImageViewTapped(sender: UITapGestureRecognizer) {
+    @objc func firstYupuImageViewTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             animateYupuSlideOutRight()
-            animateDialogDissolve()
+            animateFirstDialogDissolve()
             animateYupuAppear()
-            print("yupu image tapped")
+            print("first yupu image tapped")
+        }
+    }
+    
+    private func secondImageViewTapped() {
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.secondYupuImageViewTapped))
+        secondYupuImageView.addGestureRecognizer(tapped)
+        secondYupuImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func secondYupuImageViewTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            animationSecondShake()
+            animateSlideOutLeft()
+            animateSecondDialogDissolve()
+            print("second yupu image tapped")
         }
     }
     
@@ -173,8 +171,7 @@ extension WelcomeViewController {
 //MARK: Animation functions
 extension WelcomeViewController {
 
-    //MARK: Animations for arrival to first Yupu imageView tap
-    
+    //MARK: Animations from viewDidAppear to first Yupu imageView tap
     //Yupu first arrival
     private func animateYupuSlideIn() {
         let animationDuration = 1.9
@@ -192,8 +189,8 @@ extension WelcomeViewController {
         let animationDuration = 0.6
         
         let animator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-            self.dialogLabel.alpha = 1
-            self.dialogImageView.alpha = 1
+            self.firstDialogLabel.alpha = 1
+            self.firstDialogImageView.alpha = 1
             self.view.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 2.1)
@@ -224,12 +221,12 @@ extension WelcomeViewController {
         
     }
     //Dialog first fade out
-    private func animateDialogDissolve() {
+    private func animateFirstDialogDissolve() {
         let animationDuration = 1.9
 
         let animator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-            self.dialogImageView.alpha = 0
-            self.dialogLabel.alpha = 0
+            self.firstDialogImageView.alpha = 0
+            self.firstDialogLabel.alpha = 0
             self.view.layoutIfNeeded()
             }
         animator.startAnimation()
@@ -241,14 +238,29 @@ extension WelcomeViewController {
         
         let animator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
             self.secondYupuImageView.alpha = 1
+            self.secondDialogImageView.alpha = 1
+            self.secondDialogLabel.alpha = 1
             self.view.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 2.1)
     }
     
     
-//    TODO: update functions (adjust delay times from 200.0)
+//    MARK: Animations for second yupu image view tap
+    //Second YuPu shake
+    private func animationSecondShake() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [0, 10, -10, 10, 0]
+        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
+        animation.duration = 0.4
+        animation.isAdditive = true
+        animation.beginTime = CACurrentMediaTime()
+        
+        secondYupuImageView.layer.add(animation, forKey: "shake")
+    }
     
+    //Second YuPu slide out
     private func animateSlideOutLeft() {
         let animationDuration = 1.9
         
@@ -257,22 +269,23 @@ extension WelcomeViewController {
             
             self.view.layoutIfNeeded()
         }
-        animator.startAnimation(afterDelay: 200.0)
+        animator.startAnimation(afterDelay: 0.4)
         
-    }
-
-    private func animationSecondShake() {
-        let animation = CAKeyframeAnimation()
-        animation.keyPath = "position.x"
-        animation.values = [0, 10, -10, 10, 0]
-        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
-        animation.duration = 0.4
-        animation.isAdditive = true
-        animation.beginTime = CACurrentMediaTime() + 200.0
-        
-        secondYupuImageView.layer.add(animation, forKey: "shake")
     }
     
+    private func animateSecondDialogDissolve() {
+        let animationDuration = 1.9
+
+        let animator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.secondDialogImageView.alpha = 0
+            self.secondDialogLabel.alpha = 0
+            self.view.layoutIfNeeded()
+            }
+        animator.startAnimation(afterDelay: 0.4)
+    }
+    
+    
+    //TODO: functions for third yupu view
     private func animateDropIn() {
         let animationDuration = 1.9
         

@@ -17,8 +17,8 @@ class DialogLabel: UILabel {
         self.adjustsFontForContentSizeCategory = true
         self.numberOfLines = 0
         self.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
-        self.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
-        self.widthAnchor.constraint(lessThanOrEqualToConstant: 190).isActive = true
+        self.heightAnchor.constraint(lessThanOrEqualToConstant: 190).isActive = true
+        self.widthAnchor.constraint(lessThanOrEqualToConstant: 160).isActive = true
         
     }
     
