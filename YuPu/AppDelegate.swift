@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, WelcomeViewControllerDelegate {
+    
     var window: UIWindow?
     
     let homeScreenViewController = HomeScreenViewController()
@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController = homeScreenViewController
         //window?.rootViewController = onboardingContainerViewController
         window?.rootViewController = welcomeViewController
+        
+        welcomeViewController.delegate = self
+        
         
         return true
         
@@ -74,6 +77,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
+extension AppDelegate {
+    func didFinishOnboarding() {
+            LocalState.hasOnboarded = true
+            setRootViewController(homeScreenViewController)
+        }
+}
+
+extension AppDelegate {
+    func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard animated, let window = self.window else {
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            return
+        }
+        
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: nil, completion: nil)
+    }
+}

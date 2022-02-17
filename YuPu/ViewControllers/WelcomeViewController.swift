@@ -7,9 +7,13 @@
 
 import UIKit
 
-import UIKit
+protocol WelcomeViewControllerDelegate: AnyObject {
+    func didFinishOnboarding()
+}
 
 class WelcomeViewController: UIViewController {
+    
+    weak var delegate: WelcomeViewControllerDelegate?
     
 //MARK: UI Variables
     let firstDialogLabel = DialogLabel(placeholder: "Click YuPu and see what happens!")
@@ -42,6 +46,7 @@ class WelcomeViewController: UIViewController {
         layout()
         firstImageViewTapped()
         secondImageViewTapped()
+        thirdImageViewTapped()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,7 +137,7 @@ class WelcomeViewController: UIViewController {
     }
 }
 
-//MARK: Interaction Functions
+//MARK: Selectors
 
 //First yupu image view tapped
 extension WelcomeViewController {
@@ -162,7 +167,23 @@ extension WelcomeViewController {
             animationSecondShake()
             animateSlideOutLeft()
             animateSecondDialogDissolve()
+            animateDropIn()
+            animateThirdDialogAppearance()
             print("second yupu image tapped")
+        }
+    }
+    
+    private func thirdImageViewTapped() {
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.thirdYupuImageViewTapped))
+        thirdYupuImageView.addGestureRecognizer(tapped)
+        thirdYupuImageView.isUserInteractionEnabled = true
+    }
+    
+    
+    @objc func thirdYupuImageViewTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            delegate?.didFinishOnboarding()
+            print("third yupu image tapped")
         }
     }
     
@@ -272,7 +293,7 @@ extension WelcomeViewController {
         animator.startAnimation(afterDelay: 0.4)
         
     }
-    
+    //Second dialog disappear
     private func animateSecondDialogDissolve() {
         let animationDuration = 1.9
 
@@ -283,9 +304,7 @@ extension WelcomeViewController {
             }
         animator.startAnimation(afterDelay: 0.4)
     }
-    
-    
-    //TODO: functions for third yupu view
+    //Third YuPu image view drop in from top
     private func animateDropIn() {
         let animationDuration = 1.9
         
@@ -294,8 +313,22 @@ extension WelcomeViewController {
             
             self.view.layoutIfNeeded()
         }
-        animator.startAnimation(afterDelay: 200.0)
+        animator.startAnimation(afterDelay: 2.0)
     }
+    
+    //Third dialog appearance
+    private func animateThirdDialogAppearance() {
+        let animationDuration = 0.9
+        
+        let animator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+            self.thirdDialogLabel.alpha = 1
+            self.thirdDialogImageView.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 3.7)
+    }
+    
+    //TODO: third YuPu image view tapped animations
     private func animateChangeSize() {
         UIView.animate(withDuration: 5.0, delay: 200.0, animations: {
             self.thirdYupuImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

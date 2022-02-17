@@ -11,6 +11,7 @@
 		BA77B55B27BB9F62008A4BCC /* YupuImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55A27BB9F62008A4BCC /* YupuImageView.swift */; };
 		BA77B56027BD9128008A4BCC /* DialogImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55F27BD9128008A4BCC /* DialogImageView.swift */; };
 		BA77B56227BD91D9008A4BCC /* DialogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56127BD91D9008A4BCC /* DialogLabel.swift */; };
+		BA77B56427BEFEB9008A4BCC /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56327BEFEB9008A4BCC /* LocalState.swift */; };
 		BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */; };
 		BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */; };
 		BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */; };
@@ -25,6 +26,7 @@
 		BA77B55A27BB9F62008A4BCC /* YupuImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YupuImageView.swift; sourceTree = "<group>"; };
 		BA77B55F27BD9128008A4BCC /* DialogImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogImageView.swift; sourceTree = "<group>"; };
 		BA77B56127BD91D9008A4BCC /* DialogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogLabel.swift; sourceTree = "<group>"; };
+		BA77B56327BEFEB9008A4BCC /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		BAEC45E027B4F9F0003B5121 /* YuPu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuPu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -67,11 +69,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		BA77B55E27BC6031008A4BCC /* Extensions */ = {
+		BA77B55E27BC6031008A4BCC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				BA77B56327BEFEB9008A4BCC /* LocalState.swift */,
 			);
-			path = Extensions;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		BAEC45D727B4F9F0003B5121 = {
@@ -96,7 +99,7 @@
 				BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */,
 				BA77B55927BB9F4C008A4BCC /* View */,
 				BA77B55827BB9DAF008A4BCC /* ViewControllers */,
-				BA77B55E27BC6031008A4BCC /* Extensions */,
+				BA77B55E27BC6031008A4BCC /* Utilities */,
 				BAEC45FA27B84DCB003B5121 /* Files */,
 				BAEC45F427B4F9F2003B5121 /* Info.plist */,
 				BAEC45EC27B4F9F0003B5121 /* YuPu.xcdatamodeld */,
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */,
+				BA77B56427BEFEB9008A4BCC /* LocalState.swift in Sources */,
 				BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */,
 				BAEC45FF27B84EF9003B5121 /* OnboardingViewController.swift in Sources */,
 				BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */,

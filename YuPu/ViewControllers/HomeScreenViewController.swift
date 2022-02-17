@@ -27,7 +27,7 @@ extension HomeScreenViewController {
         stackView.spacing = 20
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "welcome"
+        label.text = "You made it to the home screen!"
         label.font = UIFont.preferredFont(forTextStyle: .title1)
     }
     
