@@ -7,12 +7,14 @@
 
 import UIKit
 
+//MARK: Protocol to register hasOnboarded state
 protocol WelcomeViewControllerDelegate: AnyObject {
     func didFinishOnboarding()
 }
 
 class WelcomeViewController: UIViewController {
     
+    //delegate for hasOnboarded:
     weak var delegate: WelcomeViewControllerDelegate?
     
 //MARK: UI Variables
@@ -138,9 +140,8 @@ class WelcomeViewController: UIViewController {
 }
 
 //MARK: Selectors
-
-//First yupu image view tapped
 extension WelcomeViewController {
+    //First yupu image view tapped
     private func firstImageViewTapped() {
         let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.firstYupuImageViewTapped))
         firstYupuImageView.addGestureRecognizer(tapped)
@@ -156,6 +157,7 @@ extension WelcomeViewController {
         }
     }
     
+    //Second yupu image view tapped
     private func secondImageViewTapped() {
         let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.secondYupuImageViewTapped))
         secondYupuImageView.addGestureRecognizer(tapped)
@@ -172,13 +174,12 @@ extension WelcomeViewController {
             print("second yupu image tapped")
         }
     }
-    
+    //Third yupu image view tapped
     private func thirdImageViewTapped() {
         let tapped = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.thirdYupuImageViewTapped))
         thirdYupuImageView.addGestureRecognizer(tapped)
         thirdYupuImageView.isUserInteractionEnabled = true
     }
-    
     
     @objc func thirdYupuImageViewTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
@@ -186,13 +187,12 @@ extension WelcomeViewController {
             print("third yupu image tapped")
         }
     }
-    
 }
 
 //MARK: Animation functions
 extension WelcomeViewController {
 
-    //MARK: Animations from viewDidAppear to first Yupu imageView tap
+//MARK: Animations from viewDidAppear to first Yupu imageView tap
     //Yupu first arrival
     private func animateYupuSlideIn() {
         let animationDuration = 1.9
@@ -267,7 +267,7 @@ extension WelcomeViewController {
     }
     
     
-//    MARK: Animations for second yupu image view tap
+//MARK: Animations for second yupu image view tap
     //Second YuPu shake
     private func animationSecondShake() {
         let animation = CAKeyframeAnimation()
@@ -329,22 +329,22 @@ extension WelcomeViewController {
     }
     
     //TODO: third YuPu image view tapped animations
-    private func animateChangeSize() {
-        UIView.animate(withDuration: 5.0, delay: 200.0, animations: {
-            self.thirdYupuImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-       })
-    }
-    
-    private func animateYupuDissolve() {
-        let animationDuration = 2.0
-        
-        let animatorTwo = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-            self.thirdYupuImageView.alpha = 0
-            self.view.layoutIfNeeded()
-            }
-        animatorTwo.startAnimation(afterDelay: 200)
-    }
-    
+//    private func animateChangeSize() {
+//        UIView.animate(withDuration: 5.0, delay: 200.0, animations: {
+//            self.thirdYupuImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//       })
+//    }
+//
+//    private func animateYupuDissolve() {
+//        let animationDuration = 2.0
+//
+//        let animatorTwo = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
+//            self.thirdYupuImageView.alpha = 0
+//            self.view.layoutIfNeeded()
+//            }
+//        animatorTwo.startAnimation(afterDelay: 200)
+//    }
+//
     //MARK: add squash animation
 //    private func animateChangeSize() {
 //        UIView.animate(withDuration: 2.0, delay: 12.0, options: [.repeat, .autoreverse], animations: {

@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WelcomeViewControllerDele
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-        //window?.rootViewController = homeScreenViewController
-        //window?.rootViewController = onboardingContainerViewController
-        window?.rootViewController = welcomeViewController
         
+        //To allow protocol delegate for hasOnboarded
         welcomeViewController.delegate = self
+        
+        displayNextScreen()
         
         
         return true
@@ -79,13 +79,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WelcomeViewControllerDele
     }
 }
 
+//MARK: register if user has finished onboarding
 extension AppDelegate {
     func didFinishOnboarding() {
             LocalState.hasOnboarded = true
             setRootViewController(homeScreenViewController)
         }
+    
+    private func displayNextScreen() {
+        if LocalState.hasOnboarded {
+            //prepMainView()
+            setRootViewController(homeScreenViewController)
+        } else {
+            setRootViewController(welcomeViewController)
+        }
+    }
 }
 
+//MARK: create transition to next screen
 extension AppDelegate {
     func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard animated, let window = self.window else {
