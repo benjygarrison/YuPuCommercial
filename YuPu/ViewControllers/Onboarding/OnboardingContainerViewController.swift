@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol OnboardingContainerViewControllerDelegate: AnyObject {
-    func didFinishOnboarding()
-}
+//protocol OnboardingContainerViewControllerDelegate: AnyObject {
+//    func didFinishOnboarding()
+//}
 
 class OnboardingContainerViewController: UIViewController {
 
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
     var currentVC: UIViewController
-    weak var delegate: OnboardingContainerViewControllerDelegate?
+//    weak var delegate: OnboardingContainerViewControllerDelegate?
     
     let closeButton = UIButton(type: .system)
     
