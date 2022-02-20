@@ -10,6 +10,8 @@ import UIKit
 //MARK: Main Yupu image view
 class YupuImageView: UIImageView {
     
+
+    
     override init(image: UIImage?) {
         super.init(frame: .zero)
         
@@ -35,8 +37,9 @@ class YupuButtonImageView: UIImageView {
         self.image = image
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.black.cgColor
-        self.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 175).isActive = true
+        //self.contentMode = .scaleAspectFit
+        self.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
         
     }
     
