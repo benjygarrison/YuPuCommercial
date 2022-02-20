@@ -13,24 +13,10 @@ class YupuImageView: UIImageView {
         super.init(frame: .zero)
         
         self.image = image
-        self.heightAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
-        self.widthAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class YupuButtonImageView: UIImageView {
-    
-    override init(image: UIImage?) {
-        super.init(frame: .zero)
-        
-        self.image = image
-        self.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
-        self.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 2).isActive = true
+        self.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .horizontal)
+        self.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749), for: .horizontal)
         
     }
     
