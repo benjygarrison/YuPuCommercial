@@ -22,3 +22,19 @@ class YupuImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class YupuButtonImageView: UIImageView {
+    
+    override init(image: UIImage?) {
+        super.init(frame: .zero)
+        
+        self.image = image
+        self.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        self.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
