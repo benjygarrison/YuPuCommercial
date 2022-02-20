@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WelcomeViewControllerDele
     let homeScreenViewController = HomeScreenViewController()
     let onboardingContainerViewController = OnboardingContainerViewController()
     let welcomeViewController = WelcomeViewController()
+    let dummyViewController = DummyViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -26,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WelcomeViewControllerDele
         //To allow protocol delegate for hasOnboarded
         welcomeViewController.delegate = self
         
-        displayNextScreen()
+        window?.rootViewController = dummyViewController
+        
+        //displayNextScreen()
         
         
         return true

@@ -33,8 +33,10 @@ class YupuButtonImageView: UIImageView {
         super.init(frame: .zero)
         
         self.image = image
-        self.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.black.cgColor
+        self.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        self.widthAnchor.constraint(equalToConstant: 175).isActive = true
         
     }
     

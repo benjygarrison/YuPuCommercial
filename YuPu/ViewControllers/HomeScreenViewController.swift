@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CloudKit
 
 class HomeScreenViewController: UIViewController {
     
@@ -18,13 +17,16 @@ class HomeScreenViewController: UIViewController {
 
     let yupuButtonVerySoft = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Soft"))
     let yupuButtonSofter = YupuButtonImageView(image: UIImage(named: "Yupu-Softer"))
-    @objc let yupuButtonSoft = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
+    let yupuButtonSoft = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
     let yupuButtonNormal = YupuButtonImageView(image: UIImage(named: "Yupu-Regular"))
     let yupuButtonHard = YupuButtonImageView(image: UIImage(named: "Yupu-Hard"))
     let yupuButtonHarder = YupuButtonImageView(image: UIImage(named: "Yupu-Harder"))
     let yupuButtonVeryHard = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Hard"))
     let yupuButtonExtra = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
     let yupuButtonExtra2 = YupuButtonImageView(image: UIImage(named: "Yupu-Regular"))
+    
+    let tappedBorderColor = UIColor.systemRed.cgColor
+    let untappedBorderColer = UIColor.black.cgColor
 
 //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class HomeScreenViewController: UIViewController {
         layout()
         yupuButtonTapped()
     }
-
+    
 //MARK: Style/Layout
     func style() {
         
@@ -85,7 +87,6 @@ class HomeScreenViewController: UIViewController {
         thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonExtra)
         thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonExtra2)
 
-
         mainYupuButtonStackview.addArrangedSubview(firstHorizontalButtonStackview)
         mainYupuButtonStackview.addArrangedSubview(secondHorizontalButtonStackview)
         mainYupuButtonStackview.addArrangedSubview(thirdHorizontalButtonStackview)
@@ -104,8 +105,8 @@ class HomeScreenViewController: UIViewController {
 extension HomeScreenViewController {
     
     private func yupuButtonTapped() {
-        let verySoftapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.verySoftButtonTapped(sender:)))
-            yupuButtonVerySoft.addGestureRecognizer(verySoftapped)
+        let verySoftTapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.verySoftButtonTapped))
+            yupuButtonVerySoft.addGestureRecognizer(verySoftTapped)
             yupuButtonVerySoft.isUserInteractionEnabled = true
         let softerTapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.softerButtonTapped))
             yupuButtonSofter.addGestureRecognizer(softerTapped)
@@ -132,15 +133,23 @@ extension HomeScreenViewController {
             yupuButtonExtra2.addGestureRecognizer(extra2Tapped)
             yupuButtonExtra2.isUserInteractionEnabled = true
     }
+                                                    
+    @objc func anyButtonTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+        print("any button tapped")
+        }
+    }
 
     @objc func verySoftButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            yupuButtonVerySoft.layer.borderColor = tappedBorderColor
             print("very soft tapped!")
         }
     }
     
     @objc func softerButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            yupuButtonSofter.layer.borderColor = tappedBorderColor
             print("softer tapped!")
         }
     }
@@ -187,5 +196,6 @@ extension HomeScreenViewController {
     }
     
 }
+
 
 
