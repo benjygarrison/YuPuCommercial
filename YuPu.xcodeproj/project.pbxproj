@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */; };
 		BA77B55B27BB9F62008A4BCC /* YupuImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */; };
-		BA77B56227BD91D9008A4BCC /* DialogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56127BD91D9008A4BCC /* DialogLabel.swift */; };
+		BA77B56227BD91D9008A4BCC /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56127BD91D9008A4BCC /* Labels.swift */; };
 		BA77B56427BEFEB9008A4BCC /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56327BEFEB9008A4BCC /* LocalState.swift */; };
 		BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */; };
 		BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC45E727B4F9F0003B5121 /* HomeScreenViewController.swift */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YupuImageViews.swift; sourceTree = "<group>"; };
-		BA77B56127BD91D9008A4BCC /* DialogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogLabel.swift; sourceTree = "<group>"; };
+		BA77B56127BD91D9008A4BCC /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		BA77B56327BEFEB9008A4BCC /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		BAEC45E027B4F9F0003B5121 /* YuPu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuPu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEC45E327B4F9F0003B5121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */,
-				BA77B56127BD91D9008A4BCC /* DialogLabel.swift */,
+				BA77B56127BD91D9008A4BCC /* Labels.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */,
 				BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */,
 				BAEC45FD27B84EE9003B5121 /* OnboardingContainerViewController.swift in Sources */,
-				BA77B56227BD91D9008A4BCC /* DialogLabel.swift in Sources */,
+				BA77B56227BD91D9008A4BCC /* Labels.swift in Sources */,
 				BA77B55B27BB9F62008A4BCC /* YupuImageViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

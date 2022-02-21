@@ -25,6 +25,8 @@ class HomeScreenViewController: UIViewController {
     let yupuButtonExtra = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
     let yupuButtonExtra2 = YupuButtonImageView(image: UIImage(named: "Yupu-Regular"))
     
+    let yupuResultLabel = YupuResultLabel(placeholder: "")
+    
     let tappedBorderColor = UIColor.systemRed.cgColor
     let untappedBorderColer = UIColor.black.cgColor
 
@@ -71,6 +73,9 @@ class HomeScreenViewController: UIViewController {
         yupuButtonVeryHard.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonExtra.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonExtra2.translatesAutoresizingMaskIntoConstraints = false
+        
+        //label
+        yupuResultLabel.translatesAutoresizingMaskIntoConstraints = false
 
     }
     
@@ -92,10 +97,17 @@ class HomeScreenViewController: UIViewController {
         mainYupuButtonStackview.addArrangedSubview(thirdHorizontalButtonStackview)
 
         view.addSubview(mainYupuButtonStackview)
+        view.addSubview(yupuResultLabel)
         
         NSLayoutConstraint.activate([
             mainYupuButtonStackview.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            mainYupuButtonStackview.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -20),
+            mainYupuButtonStackview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 20),
+        ])
+        
+        NSLayoutConstraint.activate([
+            yupuResultLabel.topAnchor.constraint(equalTo: mainYupuButtonStackview.bottomAnchor, constant: 8),
+            yupuResultLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            yupuResultLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 8),
         ])
         
     }
@@ -134,64 +146,57 @@ extension HomeScreenViewController {
             yupuButtonExtra2.isUserInteractionEnabled = true
     }
                                                     
-    @objc func anyButtonTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-        print("any button tapped")
-        }
-    }
 
     @objc func verySoftButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            yupuButtonVerySoft.layer.borderColor = tappedBorderColor
-            print("very soft tapped!")
+            yupuResultLabel.text = "Very Soft!"
         }
     }
     
     @objc func softerButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            yupuButtonSofter.layer.borderColor = tappedBorderColor
-            print("softer tapped!")
+            yupuResultLabel.text = "Pretty Soft"
         }
     }
     
     @objc func softButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("soft tapped!")
+            yupuResultLabel.text = "A Little Soft"
         }
     }
     
     @objc func normalButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("normal tapped!")
+            yupuResultLabel.text = "Just Right"
         }
     }
     @objc func hardButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("hard tapped!")
+            yupuResultLabel.text = "A Little Hard"
         }
     }
     
     @objc func harderButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("harder tapped!")
+            yupuResultLabel.text = "Pretty Hard"
         }
     }
     
     @objc func veryHardButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("very hard tapped!")
+            yupuResultLabel.text = "Very Hard!"
         }
     }
     
     @objc func extraButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("extra tapped!")
+            yupuResultLabel.text = "(Test Button 1)"
         }
     }
     
     @objc func extra2ButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            print("extra 2 tapped!")
+            yupuResultLabel.text = "(Test Button 2)"
         }
     }
     

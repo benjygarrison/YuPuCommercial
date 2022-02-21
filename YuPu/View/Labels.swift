@@ -1,5 +1,5 @@
 //
-//  DialogLabel.swift
+//  Labels.swift
 //  YuPu
 //
 //  Created by Ben Garrison on 2/16/22.
@@ -25,6 +25,26 @@ class DialogLabel: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+class YupuResultLabel: UILabel {
+    
+    init(placeholder: String?) {
+        super.init(frame: .zero)
+        
+        self.text = placeholder
+        self.textAlignment = .center
+        self.adjustsFontForContentSizeCategory = true
+        self.numberOfLines = 0
+        self.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
+
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 
