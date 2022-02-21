@@ -30,6 +30,8 @@ class WelcomeViewController: UIViewController {
     let secondYupuImageView = YupuImageView(image: UIImage(named: "yupuSmile"))
     let thirdYupuImageView = YupuImageView(image: UIImage(named: "yupuHappy"))
     
+    private let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
+    
 //MARK: Animation Variables
     var yupuTrailingEdgeOnScreen: CGFloat = -4
     var trailingEdgeOffScreen: CGFloat = -1000
@@ -49,6 +51,7 @@ class WelcomeViewController: UIViewController {
         firstImageViewTapped()
         secondImageViewTapped()
         thirdImageViewTapped()
+        hapticFeedback.prepare()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,6 +153,7 @@ extension WelcomeViewController {
     
     @objc func firstYupuImageViewTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
             animateYupuSlideOutRight()
             animateFirstDialogDissolve()
             animateYupuAppear()
@@ -166,6 +170,7 @@ extension WelcomeViewController {
     
     @objc func secondYupuImageViewTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
             animationSecondShake()
             animateSlideOutLeft()
             animateSecondDialogDissolve()
@@ -183,6 +188,7 @@ extension WelcomeViewController {
     
     @objc func thirdYupuImageViewTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
             delegate?.didFinishOnboarding()
             print("third yupu image tapped")
         }

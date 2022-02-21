@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA114EC427C37DA600631BA6 /* YupuColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA114EC327C37DA600631BA6 /* YupuColorView.swift */; };
+		BA114EC827C391E700631BA6 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA114EC727C391E700631BA6 /* Buttons.swift */; };
 		BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */; };
 		BA77B55B27BB9F62008A4BCC /* YupuImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */; };
 		BA77B56227BD91D9008A4BCC /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77B56127BD91D9008A4BCC /* Labels.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA114EC327C37DA600631BA6 /* YupuColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YupuColorView.swift; sourceTree = "<group>"; };
+		BA114EC727C391E700631BA6 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		BA77B55227BB56B2008A4BCC /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YupuImageViews.swift; sourceTree = "<group>"; };
 		BA77B56127BD91D9008A4BCC /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 			children = (
 				BA77B55A27BB9F62008A4BCC /* YupuImageViews.swift */,
 				BA77B56127BD91D9008A4BCC /* Labels.swift */,
+				BA114EC327C37DA600631BA6 /* YupuColorView.swift */,
+				BA114EC727C391E700631BA6 /* Buttons.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,7 +201,9 @@
 				BAEC45EE27B4F9F0003B5121 /* YuPu.xcdatamodeld in Sources */,
 				BA77B56427BEFEB9008A4BCC /* LocalState.swift in Sources */,
 				BAEC45E827B4F9F0003B5121 /* HomeScreenViewController.swift in Sources */,
+				BA114EC827C391E700631BA6 /* Buttons.swift in Sources */,
 				BAEC45FF27B84EF9003B5121 /* OnboardingViewController.swift in Sources */,
+				BA114EC427C37DA600631BA6 /* YupuColorView.swift in Sources */,
 				BA77B55327BB56B2008A4BCC /* WelcomeViewController.swift in Sources */,
 				BAEC45E427B4F9F0003B5121 /* AppDelegate.swift in Sources */,
 				BAEC45FD27B84EE9003B5121 /* OnboardingContainerViewController.swift in Sources */,

@@ -49,6 +49,22 @@ class YupuButtonImageView: UIImageView {
     
 }
 
+//MARK: Empty image view for button buffers
+class YupuEmptyButtonImageView: UIImageView {
+    
+    init() {
+        super.init(frame: .zero)
+        //self.contentMode = .scaleAspectFit
+        self.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        self.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 //MARK: Image view for dialog box
 class DialogImageView: UIImageView {
     
