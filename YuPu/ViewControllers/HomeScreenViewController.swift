@@ -21,9 +21,9 @@ class HomeScreenViewController: UIViewController {
     let yupuButtonNormal = YupuButtonImageView(image: UIImage(named: "Yupu-Regular"))
     let yupuButtonHard = YupuButtonImageView(image: UIImage(named: "Yupu-Hard"))
     let yupuButtonHarder = YupuButtonImageView(image: UIImage(named: "Yupu-Harder"))
+    let yupuButtonExtra = YupuEmptyButtonImageView()
     let yupuButtonVeryHard = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Hard"))
-    let yupuButtonExtra = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
-    let yupuButtonExtra2 = YupuButtonImageView(image: UIImage(named: "Yupu-Regular"))
+    let yupuButtonExtra2 = YupuEmptyButtonImageView()
     
     let yupuResultLabel = YupuResultLabel(placeholder: "")
     
@@ -88,8 +88,8 @@ class HomeScreenViewController: UIViewController {
         secondHorizontalButtonStackview.addArrangedSubview(yupuButtonHard)
         secondHorizontalButtonStackview.addArrangedSubview(yupuButtonHarder)
 
-        thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonVeryHard)
         thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonExtra)
+        thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonVeryHard)
         thirdHorizontalButtonStackview.addArrangedSubview(yupuButtonExtra2)
 
         mainYupuButtonStackview.addArrangedSubview(firstHorizontalButtonStackview)
@@ -138,12 +138,6 @@ extension HomeScreenViewController {
         let veryHardTapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.veryHardButtonTapped))
             yupuButtonVeryHard.addGestureRecognizer(veryHardTapped)
             yupuButtonVeryHard.isUserInteractionEnabled = true
-        let extraTapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.extraButtonTapped))
-            yupuButtonExtra.addGestureRecognizer(extraTapped)
-            yupuButtonExtra.isUserInteractionEnabled = true
-        let extra2Tapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.extra2ButtonTapped))
-            yupuButtonExtra2.addGestureRecognizer(extra2Tapped)
-            yupuButtonExtra2.isUserInteractionEnabled = true
     }
                                                     
 
@@ -187,19 +181,7 @@ extension HomeScreenViewController {
             yupuResultLabel.text = "Very Hard!"
         }
     }
-    
-    @objc func extraButtonTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            yupuResultLabel.text = "(Test Button 1)"
-        }
-    }
-    
-    @objc func extra2ButtonTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            yupuResultLabel.text = "(Test Button 2)"
-        }
-    }
-    
+
 }
 
 
