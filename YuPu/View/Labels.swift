@@ -27,7 +27,7 @@ class DialogLabel: UILabel {
     }
 }
 
-class YupuResultLabel: UILabel {
+class YupuLabel: UILabel {
     
     init(placeholder: String?) {
         super.init(frame: .zero)

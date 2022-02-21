@@ -10,10 +10,14 @@ import UIKit
 class HomeScreenViewController: UIViewController {
     
 //MARK: UI variables
+    //StackViews
     let mainYupuButtonStackview = UIStackView()
+    
     let firstHorizontalButtonStackview = UIStackView()
     let secondHorizontalButtonStackview = UIStackView()
     let thirdHorizontalButtonStackview = UIStackView()
+    
+    let buttonStackView = UIStackView()
 
     //Shape buttons
     let yupuButtonVerySoft = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Soft"))
@@ -28,20 +32,37 @@ class HomeScreenViewController: UIViewController {
     
     //Color buttons
     let yupuBlack = YupuColorView(color: .black)
-    let yupuDarkBrown = YupuColorView(color: UIColor(red: 82.00, green: 50.00, blue: 47.00, alpha: 1.00))
-    let yupuBrown = YupuColorView(color: UIColor(red: 135.00, green: 77.00, blue: 73.00, alpha: 1.00))
-    let yupuLightBrown = YupuColorView(color: UIColor(red: 161.00, green: 99.00, blue: 95.00, alpha: 1.00))
-    let yupuOrange = YupuColorView(color: UIColor(red: 161.00, green: 93.00, blue: 45.00, alpha: 1.00))
-    let yupuYellow = YupuColorView(color: UIColor(red: 161.00, green: 122.00, blue: 45.00, alpha: 1.00))
-    let yupuGreen = YupuColorView(color: UIColor(red: 130.00, green: 161.00, blue: 45.00, alpha: 1.00))
-    let yupuGrey = YupuColorView(color: UIColor(red: 162.00, green: 171.00, blue: 137.00, alpha: 1.00))
-    let yupuWhite = YupuColorView(color: UIColor(red: 218.00, green: 222.00, blue: 206.00, alpha: 1.00))
+    let yupuDarkBrown = YupuColorView(color: UIColor(red: 82/255, green: 50/255, blue: 47/255, alpha: 1.00))
+    let yupuBrown = YupuColorView(color: UIColor(red: 135/255, green: 77/255, blue: 73/255, alpha: 1.00))
+    let yupuLightBrown = YupuColorView(color: UIColor(red: 161/255, green: 99/255, blue: 95/255, alpha: 1.00))
+    let yupuOrange = YupuColorView(color: UIColor(red: 161/255, green: 93/255, blue: 45/255, alpha: 1.00))
+    let yupuYellow = YupuColorView(color: UIColor(red: 161/255, green: 122/255, blue: 45/255, alpha: 1.00))
+    let yupuGreen = YupuColorView(color: UIColor(red: 130/255, green: 161/255, blue: 45/255, alpha: 1.00))
+    let yupuGrey = YupuColorView(color: UIColor(red: 162/255, green: 171/255, blue: 137/255, alpha: 1.00))
+    let yupuWhite = YupuColorView(color: UIColor(red: 218/255, green: 222/255, blue: 206/255, alpha: 1.00))
     
-    //Label
-    let yupuResultLabel = YupuResultLabel(placeholder: "")
+    //Labels
+    let yupuResultLabel = YupuLabel(placeholder: "placeholder")
+    let yupuConfirmLabel = YupuLabel(placeholder: "Confirm choice?")
     
-    //Yes/No button
-    //TODO: subclass this button
+    //Yes/No buttons
+    let yesButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemBlue
+        button.titleLabel?.text = "Yes"
+        button.titleLabel?.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
+        button.titleLabel?.textColor = .black
+         return button
+    }()
+    //TODO: Subclass these buttons!
+    let noButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemRed
+        button.titleLabel?.text = "No"
+        button.titleLabel?.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
+        button.titleLabel?.textColor = .black
+         return button
+    }()
     
     //Haptic feedback variable
     private let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
@@ -58,13 +79,13 @@ class HomeScreenViewController: UIViewController {
 //MARK: Style/Layout
     func style() {
         
-        //main stackview
+        //Main stackview
         mainYupuButtonStackview.translatesAutoresizingMaskIntoConstraints = false
         mainYupuButtonStackview.axis = .vertical
         mainYupuButtonStackview.spacing = 8
         mainYupuButtonStackview.distribution = .fillEqually
         
-        //inner stackviews
+        //Inner stackviews
         firstHorizontalButtonStackview.translatesAutoresizingMaskIntoConstraints = false
         firstHorizontalButtonStackview.axis = .horizontal
         firstHorizontalButtonStackview.spacing = 8
@@ -80,7 +101,13 @@ class HomeScreenViewController: UIViewController {
         thirdHorizontalButtonStackview.spacing = 8
         thirdHorizontalButtonStackview.distribution = .fillEqually
         
-        //buttons
+        //Button stackview
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.axis = .horizontal
+        buttonStackView.spacing = 16
+        buttonStackView.distribution = .fillProportionally
+        
+        //ImageViews
         yupuButtonSoft.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonSofter.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonSoft.translatesAutoresizingMaskIntoConstraints = false
@@ -91,6 +118,7 @@ class HomeScreenViewController: UIViewController {
         yupuButtonExtra.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonExtra2.translatesAutoresizingMaskIntoConstraints = false
         
+        //Views
         yupuBlack.translatesAutoresizingMaskIntoConstraints = false
         yupuDarkBrown.translatesAutoresizingMaskIntoConstraints = false
         yupuBrown.translatesAutoresizingMaskIntoConstraints = false
@@ -102,8 +130,15 @@ class HomeScreenViewController: UIViewController {
         yupuWhite.translatesAutoresizingMaskIntoConstraints = false
         
         
-        //label
+        //Labels
         yupuResultLabel.translatesAutoresizingMaskIntoConstraints = false
+        yupuResultLabel.isHidden = true
+        yupuConfirmLabel.translatesAutoresizingMaskIntoConstraints = false
+        yupuConfirmLabel.isHidden = true
+        
+        //Buttons
+        yesButton.translatesAutoresizingMaskIntoConstraints = false
+        noButton.translatesAutoresizingMaskIntoConstraints = false
 
     }
     
@@ -123,9 +158,14 @@ class HomeScreenViewController: UIViewController {
         mainYupuButtonStackview.addArrangedSubview(firstHorizontalButtonStackview)
         mainYupuButtonStackview.addArrangedSubview(secondHorizontalButtonStackview)
         mainYupuButtonStackview.addArrangedSubview(thirdHorizontalButtonStackview)
+        
+        buttonStackView.addArrangedSubview(yesButton)
+        buttonStackView.addArrangedSubview(noButton)
 
         view.addSubview(mainYupuButtonStackview)
         view.addSubview(yupuResultLabel)
+        view.addSubview(yupuConfirmLabel)
+        view.addSubview(buttonStackView)
         
         NSLayoutConstraint.activate([
             mainYupuButtonStackview.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -136,6 +176,17 @@ class HomeScreenViewController: UIViewController {
             yupuResultLabel.topAnchor.constraint(equalTo: mainYupuButtonStackview.bottomAnchor, constant: 8),
             yupuResultLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
             yupuResultLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 8),
+        ])
+        
+        NSLayoutConstraint.activate([
+            yupuConfirmLabel.topAnchor.constraint(equalTo: yupuResultLabel.bottomAnchor, constant: 16),
+            yupuConfirmLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            yupuConfirmLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 8),
+        ])
+        
+        NSLayoutConstraint.activate([
+            buttonStackView.topAnchor.constraint(equalTo: yupuConfirmLabel.bottomAnchor, constant: 8),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
         
     }
@@ -197,6 +248,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Soft!"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     
@@ -206,6 +259,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Soft"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     
@@ -215,6 +270,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Soft"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     
@@ -224,6 +281,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Just Right"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     @objc func hardButtonTapped(sender: UITapGestureRecognizer) {
@@ -232,6 +291,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Hard"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     
@@ -241,6 +302,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Hard"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
     
@@ -250,6 +313,8 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Hard!"
+            yupuResultLabel.isHidden = false
+            yupuConfirmLabel.isHidden = false
         }
     }
 
