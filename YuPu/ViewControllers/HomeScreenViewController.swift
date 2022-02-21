@@ -27,8 +27,7 @@ class HomeScreenViewController: UIViewController {
     
     let yupuResultLabel = YupuResultLabel(placeholder: "")
     
-    let tappedBorderColor = UIColor.systemRed.cgColor
-    let untappedBorderColer = UIColor.black.cgColor
+    private let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
 
 //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -36,6 +35,7 @@ class HomeScreenViewController: UIViewController {
         style()
         layout()
         yupuButtonTapped()
+        hapticFeedback.prepare()
     }
     
 //MARK: Style/Layout
@@ -139,50 +139,94 @@ extension HomeScreenViewController {
             yupuButtonVeryHard.addGestureRecognizer(veryHardTapped)
             yupuButtonVeryHard.isUserInteractionEnabled = true
     }
-                                                    
+    
+    private func animateShrinkButton(_ imageView: UIImageView, transform: CGAffineTransform) {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 3,
+                           options: [.curveEaseInOut],
+                           animations: {
+                            imageView.transform = transform
+                }, completion: nil)
+        }
+    
+    private func animateUnshrinkButton(_ imageView: UIImageView, transform: CGAffineTransform) {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0.2,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 3,
+                           options: [.curveEaseInOut],
+                           animations: {
+                            imageView.transform = transform
+                }, completion: nil)
+        }
+    
 
     @objc func verySoftButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Soft!"
         }
     }
     
     @objc func softerButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Soft"
         }
     }
     
     @objc func softButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Soft"
         }
     }
     
     @objc func normalButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Just Right"
         }
     }
     @objc func hardButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Hard"
         }
     }
     
     @objc func harderButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Hard"
         }
     }
     
     @objc func veryHardButtonTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            hapticFeedback.impactOccurred()
+            animateShrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+            animateUnshrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Hard!"
         }
     }
 
 }
+
 
 
 
