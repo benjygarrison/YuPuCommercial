@@ -127,7 +127,6 @@ class HomeScreenViewController: UIViewController {
         noButton.translatesAutoresizingMaskIntoConstraints = false
         yesButton.isHidden = true
         noButton.isHidden = true
-
     }
     
     func layout() {
@@ -183,6 +182,13 @@ class HomeScreenViewController: UIViewController {
 //MARK: Selectors
 extension HomeScreenViewController {
     
+    private func notHidden() {
+        yesButton.isHidden = false
+        noButton.isHidden = false
+        yupuConfirmLabel.isHidden = false
+        yupuResultLabel.isHidden = false
+    }
+    
     private func yupuButtonTapped() {
         let verySoftTapped = UITapGestureRecognizer(target: self, action: #selector(HomeScreenViewController.verySoftButtonTapped))
             yupuButtonVerySoft.addGestureRecognizer(verySoftTapped)
@@ -236,8 +242,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonVerySoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Soft!"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
     
@@ -247,8 +252,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonSofter, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Soft"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+           notHidden()
         }
     }
     
@@ -258,8 +262,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonSoft, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Soft"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
     
@@ -269,8 +272,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonNormal, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Just Right"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
     @objc func hardButtonTapped(sender: UITapGestureRecognizer) {
@@ -279,8 +281,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "A Little Hard"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
     
@@ -290,8 +291,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonHarder, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Pretty Hard"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
     
@@ -301,8 +301,7 @@ extension HomeScreenViewController {
             animateShrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
             animateUnshrinkButton(yupuButtonVeryHard, transform: CGAffineTransform.identity.scaledBy(x: 1, y: 1))
             yupuResultLabel.text = "Very Hard!"
-            yupuResultLabel.isHidden = false
-            yupuConfirmLabel.isHidden = false
+            notHidden()
         }
     }
 

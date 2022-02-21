@@ -14,7 +14,6 @@ class YesNoButton: UIButton {
         
         self.backgroundColor = .systemBackground
         self.titleLabel?.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
-        //self.titleLabel?.textColor = .black
         self.setTitleColor(UIColor.black, for: .normal)
         self.setTitle(placeholder, for: .normal)
         self.titleLabel?.textAlignment = .center
