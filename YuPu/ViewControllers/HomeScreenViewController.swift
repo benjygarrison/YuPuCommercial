@@ -19,7 +19,7 @@ class HomeScreenViewController: UIViewController {
     
     let buttonStackView = UIStackView()
 
-    //Shape buttons
+    //Shape imageviews
     let yupuButtonVerySoft = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Soft"))
     let yupuButtonSofter = YupuButtonImageView(image: UIImage(named: "Yupu-Softer"))
     let yupuButtonSoft = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
@@ -30,7 +30,7 @@ class HomeScreenViewController: UIViewController {
     let yupuButtonVeryHard = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Hard"))
     let yupuButtonExtra2 = YupuEmptyButtonImageView()
     
-    //Color buttons
+    //Color views
     let yupuBlack = YupuColorView(color: .black)
     let yupuDarkBrown = YupuColorView(color: UIColor(red: 82/255, green: 50/255, blue: 47/255, alpha: 1.00))
     let yupuBrown = YupuColorView(color: UIColor(red: 135/255, green: 77/255, blue: 73/255, alpha: 1.00))
@@ -46,23 +46,9 @@ class HomeScreenViewController: UIViewController {
     let yupuConfirmLabel = YupuLabel(placeholder: "Confirm choice?")
     
     //Yes/No buttons
-    let yesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
-        button.titleLabel?.text = "Yes"
-        button.titleLabel?.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
-        button.titleLabel?.textColor = .black
-         return button
-    }()
+    let yesButton = YesNoButton(placeholder: "Yes")
     //TODO: Subclass these buttons!
-    let noButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemRed
-        button.titleLabel?.text = "No"
-        button.titleLabel?.font = UIFont(name: "ChalkboardSE-Bold", size: 20)
-        button.titleLabel?.textColor = .black
-         return button
-    }()
+    let noButton = YesNoButton(placeholder: "No")
     
     //Haptic feedback variable
     private let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
@@ -139,6 +125,8 @@ class HomeScreenViewController: UIViewController {
         //Buttons
         yesButton.translatesAutoresizingMaskIntoConstraints = false
         noButton.translatesAutoresizingMaskIntoConstraints = false
+        yesButton.isHidden = true
+        noButton.isHidden = true
 
     }
     
