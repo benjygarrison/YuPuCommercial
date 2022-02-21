@@ -15,6 +15,7 @@ class HomeScreenViewController: UIViewController {
     let secondHorizontalButtonStackview = UIStackView()
     let thirdHorizontalButtonStackview = UIStackView()
 
+    //Shape buttons
     let yupuButtonVerySoft = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Soft"))
     let yupuButtonSofter = YupuButtonImageView(image: UIImage(named: "Yupu-Softer"))
     let yupuButtonSoft = YupuButtonImageView(image: UIImage(named: "Yupu-Soft"))
@@ -25,8 +26,24 @@ class HomeScreenViewController: UIViewController {
     let yupuButtonVeryHard = YupuButtonImageView(image: UIImage(named: "Yupu-Very-Hard"))
     let yupuButtonExtra2 = YupuEmptyButtonImageView()
     
+    //Color buttons
+    let yupuBlack = YupuColorView(color: .black)
+    let yupuDarkBrown = YupuColorView(color: UIColor(red: 82.00, green: 50.00, blue: 47.00, alpha: 1.00))
+    let yupuBrown = YupuColorView(color: UIColor(red: 135.00, green: 77.00, blue: 73.00, alpha: 1.00))
+    let yupuLightBrown = YupuColorView(color: UIColor(red: 161.00, green: 99.00, blue: 95.00, alpha: 1.00))
+    let yupuOrange = YupuColorView(color: UIColor(red: 161.00, green: 93.00, blue: 45.00, alpha: 1.00))
+    let yupuYellow = YupuColorView(color: UIColor(red: 161.00, green: 122.00, blue: 45.00, alpha: 1.00))
+    let yupuGreen = YupuColorView(color: UIColor(red: 130.00, green: 161.00, blue: 45.00, alpha: 1.00))
+    let yupuGrey = YupuColorView(color: UIColor(red: 162.00, green: 171.00, blue: 137.00, alpha: 1.00))
+    let yupuWhite = YupuColorView(color: UIColor(red: 218.00, green: 222.00, blue: 206.00, alpha: 1.00))
+    
+    //Label
     let yupuResultLabel = YupuResultLabel(placeholder: "")
     
+    //Yes/No button
+    //TODO: subclass this button
+    
+    //Haptic feedback variable
     private let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
 
 //MARK: ViewDidLoad
@@ -73,6 +90,17 @@ class HomeScreenViewController: UIViewController {
         yupuButtonVeryHard.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonExtra.translatesAutoresizingMaskIntoConstraints = false
         yupuButtonExtra2.translatesAutoresizingMaskIntoConstraints = false
+        
+        yupuBlack.translatesAutoresizingMaskIntoConstraints = false
+        yupuDarkBrown.translatesAutoresizingMaskIntoConstraints = false
+        yupuBrown.translatesAutoresizingMaskIntoConstraints = false
+        yupuLightBrown.translatesAutoresizingMaskIntoConstraints = false
+        yupuOrange.translatesAutoresizingMaskIntoConstraints = false
+        yupuYellow.translatesAutoresizingMaskIntoConstraints = false
+        yupuGreen.translatesAutoresizingMaskIntoConstraints = false
+        yupuGrey.translatesAutoresizingMaskIntoConstraints = false
+        yupuWhite.translatesAutoresizingMaskIntoConstraints = false
+        
         
         //label
         yupuResultLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +169,7 @@ extension HomeScreenViewController {
     }
     
     private func animateShrinkButton(_ imageView: UIImageView, transform: CGAffineTransform) {
-            UIView.animate(withDuration: 0.3,
+            UIView.animate(withDuration: 0.1,
                            delay: 0,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 3,
@@ -152,8 +180,8 @@ extension HomeScreenViewController {
         }
     
     private func animateUnshrinkButton(_ imageView: UIImageView, transform: CGAffineTransform) {
-            UIView.animate(withDuration: 0.3,
-                           delay: 0.2,
+            UIView.animate(withDuration: 0.1,
+                           delay: 0.1,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 3,
                            options: [.curveEaseInOut],
