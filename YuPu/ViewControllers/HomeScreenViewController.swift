@@ -46,7 +46,12 @@ class HomeScreenViewController: UIViewController {
     let yupuConfirmLabel = YupuLabel(placeholder: "Confirm choice?")
     
     //Yes/No buttons
-    let yesButton = YesNoButton(placeholder: "Yes")
+    let yesButton: UIButton = {
+        let button = YesNoButton(placeholder: "Yes")
+        button.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     //TODO: Subclass these buttons!
     let noButton = YesNoButton(placeholder: "No")
     
@@ -59,6 +64,7 @@ class HomeScreenViewController: UIViewController {
         style()
         layout()
         yupuButtonTapped()
+        //yesButtonTapped()
         hapticFeedback.prepare()
     }
     
@@ -182,6 +188,7 @@ class HomeScreenViewController: UIViewController {
 //MARK: Selectors
 extension HomeScreenViewController {
     
+//Button view selectors
     private func notHidden() {
         yesButton.isHidden = false
         noButton.isHidden = false
@@ -303,6 +310,12 @@ extension HomeScreenViewController {
             yupuResultLabel.text = "Very Hard!"
             notHidden()
         }
+    }
+    
+//YES/NO button selectors
+    
+    @objc func yesButtonTapped() {
+        view.backgroundColor = .red
     }
 
 }
